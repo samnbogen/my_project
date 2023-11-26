@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Layout = ({ children }) => {
+const Background = ({ children }) => {
   return (
     <main className="h-screen flex items-center justify-center bg-dark-violet ">
       <div className="absolute w-32 h-32 bg-olive rounded-full animate-move1 filter blur-lg"
@@ -58,10 +58,10 @@ const Layout = ({ children }) => {
       <div className="absolute w-32 h-32 bg-metal rounded-full animate-move2 filter blur-lg"
         style={{animationDelay: '-50s', opacity: '0.5'}}>
       </div>
-        {children}
-
+      {children}
     </main>
+    
   );
 };
 
-export default Layout;
+export default Background;

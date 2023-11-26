@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
-function URLShortener() {
+
+function URLShortener({setInput}) {
     const [url, setUrl] = useState('');
-    const [shortUrl, setShortUrl] = useState('');
 
     const shortenUrl = async () => {
-        try {
-            const response = await axios.get(`https://api.shrtco.de/v2/shorten?url=${url}`);
-            setShortUrl(response.data.result.full_short_link);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+        setInput(url);
+        setInput('');
+    }
+
 
     return (
         <div>
-            <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} />
-            <button onClick={shortenUrl}>Shorten URL</button>
-            {shortUrl && <a href={shortUrl}>{shortUrl}</a>}
+            <input 
+                className='p-1 mr-1 block text-dark-violet bg-white border border-dark-violet'
+                type="text" placeholder="give me a url" value={url} onChange={e => setUrl(e.target.value)} />
+            <button 
+                className='px-4 block text-dark-violet bg-light-gray border border-dark-violet hover:bg-dark-violet hover:text-light-gray'
+                onClick={shortenUrl}>Shorten URL</button>
+
         </div>
     );
 }

@@ -37,6 +37,7 @@ module.exports = {
     },
     colors: {
       'white': '#FBF9FF',
+      'light-gray': '#E8E8E8',
       'metal': '#565584',
       'moss': '#92977E',
       'olive': '#38423B',
