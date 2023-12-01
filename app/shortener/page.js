@@ -11,7 +11,7 @@ function Page() {
 
   return (
     <Background className="z-0">
-        <main className="min-h-screen p-12 z-10 flex items-center justify-center z-40">
+        <main className="min-h-screen p-12 flex items-center justify-center z-40">
             <div className="bg-white rounded-lg p-4">
                 <h1 
                     className="p-2 text-5xl font-bold text-center text-moss"
@@ -26,5 +26,7 @@ function Page() {
 }
 
 export default Page;
+  
+  
   
   

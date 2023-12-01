@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import { useEffect, useState } from "react"
 import CopyToClipboard from "react-copy-to-clipboard";
 
@@ -16,13 +15,13 @@ const LinkResult = ({ inputValue }) => {
       const response = await fetch('https://api-ssl.bitly.com/v4/shorten', {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_BITLY_TOKEN}`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_REACT_APP_BITLY_TOKEN}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           long_url: inputValue,
           domain: 'bit.ly',
-          group_guid: `${process.env.REACT_APP_GUID}`,
+          group_guid: `${process.env.NEXT_PUBLIC_REACT_APP_GUID}`,
         }),
       });
       const data = await response.json();
@@ -34,37 +33,23 @@ const LinkResult = ({ inputValue }) => {
     }
   }
 
-  console.log(shortenLink);
-  
-
   useEffect(() => {
     if(inputValue.length) {
       fetchData();
     }
   }, [inputValue]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setCopied(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [copied]);
-
-  if(loading) {
-    return <p className="noData">Loading...</p>
-  }
-  if(error) {
-    return <p className="noData">Something went wrong</p>
-  }
-
-
   return (
-    <div className="h-10">
-      {shortenLink && (
+    <div className="h-20">
+      {loading ? (
+        <div className="mt-4 font-bold text-center text-dark-violet">Loading...</div>
+      ) : error ? (
+        <div className="mt-4 font-bold text-center text-dark-violet">Error: {error.message}</div>
+      ) : shortenLink && (
         <div>
-          <p className="text-2xl font-bold text-center text-dark-violet">{shortenLink}</p>
+          <p className="mt-4 text-2xl font-bold text-center text-dark-violet">{shortenLink}</p>
           <CopyToClipboard
+            className="m-auto px-2 h-8 block text-dark-violet bg-light-gray border border-dark-violet hover:bg-dark-violet hover:text-light-gray"
             text={shortenLink}
             onCopy={() => setCopied(true)}
           >
@@ -73,7 +58,7 @@ const LinkResult = ({ inputValue }) => {
         </div>
       )}
     </div>
-  )
-}
+  )}
+
 
 export default LinkResult;
