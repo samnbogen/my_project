@@ -1,6 +1,7 @@
 # URL Shortener
 
-This is a URL shortener with an animated background built with React using Tailwind.
+This is a URL shortener with an animated background.
+
 It is deployed on [Vercel](https://my-project-red-eta.vercel.app/)
 
 ## Features
