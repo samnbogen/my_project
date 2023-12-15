@@ -15,7 +15,8 @@ function Page() {
             <div className="bg-white rounded-lg p-4">
                 <h1 
                     className="p-2 text-5xl font-bold text-center text-moss"
-                    style={{ fontFamily: 'Inconsolata' }}>
+                    //https://fonts.google.com/specimen/Inconsolata
+                    style={{ fontFamily: 'Inconsolata' }}> 
                         This is a URL Shortener</h1>
                 <InputShortener setInputValue={setInputValue} />
                 <LinkResult inputValue={inputValue} />
